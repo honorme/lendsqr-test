@@ -1,0 +1,155 @@
+.loaderContainer {
+  width: calc(100vw - 280px);
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
+}
+
+.logoWrapper {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  animation: slinkyWalk 2s ease-in-out infinite;
+  transform-origin: center bottom;
+  scale: 1.5;
+}
+
+.slinkyRoll {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+  animation: slinkyRotate 2s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.shadowElement {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 6px;
+  background: rgba(44, 62, 80, 0.2);
+  border-radius: 50%;
+  animation: shadowMove 2s ease-in-out infinite;
+}
+
+.loadingText {
+  margin-top: 40px;
+  color: #2c3e50;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.loadingDots {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.loadingDots::after {
+  content: '';
+  animation: dotsAnimation 1.5s steps(4, end) infinite;
+}
+
+/* Slinky walking animation - tumbling end over end while staying in place */
+@keyframes slinkyWalk {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px);
+  }
+  50% {
+    transform: translateY(0px) translateX(60px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(15px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+@keyframes slinkyRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shadowMove {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.2;
+  }
+  25%,
+  75% {
+    transform: translateX(-35%) scale(0.8);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateX(-20%) scale(1.2);
+    opacity: 0.25;
+  }
+}
+
+@keyframes dotsAnimation {
+  0% {
+    content: '';
+  }
+  25% {
+    content: '.';
+  }
+  50% {
+    content: '..';
+  }
+  75% {
+    content: '...';
+  }
+  100% {
+    content: '';
+  }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .loaderContainer {
+    width: 150px;
+    height: 150px;
+  }
+
+  .logoWrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .loadingText {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .shadowElement {
+    width: 30px;
+    height: 4px;
+  }
+}
