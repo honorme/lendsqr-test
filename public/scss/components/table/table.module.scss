@@ -1,0 +1,91 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #f2f3f7;
+  background-color: #fff;
+  padding: 10px 20px 0 20px;
+  border-radius: 5px;
+}
+
+// Table layout
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333;
+}
+
+// Header
+.headerRow {
+  text-align: left;
+}
+
+.headerCell {
+  padding: 12px 5px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #545f7d;
+  white-space: nowrap;
+}
+
+// Body
+.bodyRow {
+  position: relative;
+  border-top: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+
+  &:nth-child(1) {
+    border: none;
+  }
+}
+
+.bodyCell {
+  padding: 12px 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  color: #545f7d;
+}
+
+// Row selected state
+.selected {
+  background-color: rgba(213, 219, 225, 0.3);
+}
+
+// Empty state
+.noResults {
+  height: 96px;
+  text-align: center;
+  font-style: italic;
+  color: #999;
+  // background-color: #f9f9f9;
+}
+
+// Pagination wrapper
+.pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menuTriggerBody {
+  position: sticky;
+  right: 0px;
+
+  margin-top: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50px;
+  padding: 2px 2px;
+  backdrop-filter: blur(1px);
+  cursor: pointer;
+}
+
+.menuTrigger {
+  &:hover {
+    scale: 1.2;
+  }
+}

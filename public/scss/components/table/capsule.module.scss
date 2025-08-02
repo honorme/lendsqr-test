@@ -1,0 +1,130 @@
+.wrapper {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.capsule {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; // 4px
+}
+
+.small {
+  font-size: 9px;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.normal {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 16px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+}
+
+/* Accent Styles */
+.recova {
+  background-color: #f9f1e9;
+  color: #f4a82b;
+}
+
+.recovaDot {
+  background-color: #f4a82b;
+}
+
+.amber {
+  background-color: #fff6ed;
+  color: #c4320a;
+}
+
+.amberDot {
+  background-color: #c4320a;
+}
+
+.pink {
+  background-color: #fdf2fa;
+  color: #c11574;
+}
+
+.pinkDot {
+  background-color: #c11574;
+}
+
+.purple {
+  background-color: #f9f5ff;
+  color: #5925dc;
+}
+
+.purpleDot {
+  background-color: #5925dc;
+}
+
+.blue {
+  background-color: #e9f3fb;
+  color: #175cd3;
+}
+
+.blueDot {
+  background-color: #175cd3;
+}
+
+.skyBlue {
+  background-color: #f0f9ff;
+  color: #026aa2;
+}
+
+.skyBlueDot {
+  background-color: #026aa2;
+}
+
+.red {
+  background-color: #fef3f2;
+  color: #b42318;
+}
+
+.redDot {
+  background-color: #b42318;
+}
+
+.green {
+  background-color: #ecfdf3;
+  color: #027a48;
+}
+
+.greenDot {
+  background-color: #027a48;
+}
+
+.indigo {
+  background-color: #f8f9fc;
+  color: #363f72;
+}
+
+.indigoDot {
+  background-color: #363f72;
+}
+
+.grey {
+  background-color: rgba(106, 106, 106, 0.18);
+  color: #000000;
+}
+
+.greyDot {
+  background-color: rgba(0, 0, 0, 0.18);
+}
+
+.default {
+  background-color: #f6f6f6;
+  color: #333333;
+}
+
+.defaultDot {
+  background-color: #333333;
+}
