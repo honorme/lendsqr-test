@@ -32,7 +32,7 @@ The application implements the following features based on the Figma design prov
 
 ## Live Demo
 
-> ...
+> https://honour-nosakhare-lendsqr-fe-test.vercel.app/
 
 ---
 
