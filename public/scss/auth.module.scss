@@ -1,0 +1,73 @@
+// main
+.auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .logoBody {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .leftSide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f6f67d;
+  }
+
+  .rightSide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// tablet
+@media (max-width: 1024px) {
+  .auth {
+    grid-template-columns: 1fr;
+    .leftSide {
+      display: none;
+    }
+  }
+}
+
+// mobile
+@media (max-width: 768px) {
+  .logoBody {
+    .lendsqrText {
+      display: none;
+    }
+  }
+}
+
+// extra
+.fadingEdge {
+  mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0.9, 1) 90%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    linear-gradient(to right, rgba(0, 0, 0.9, 1) 90%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0.9, 1) 90%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to left, rgba(0, 0, 0.9, 1) 90%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0.9, 1) 90%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    linear-gradient(to right, rgba(0, 0, 0.9, 1) 90%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0.9, 1) 90%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to left, rgba(0, 0, 0.9, 1) 90%, rgba(0, 0, 0, 0) 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: destination-in;
+}
