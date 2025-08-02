@@ -1,0 +1,8 @@
+export { default as DecisionModelIcon } from './decision-models.svg'
+export { default as GuarantorsIcon } from './guarantors.svg'
+export { default as KarmaIcon } from './karma.svg'
+export { default as LoanRequestsIcon } from './loan-requests.svg'
+export { default as LoansIcon } from './loans.svg'
+export { default as SavingsIcon } from './savings.svg'
+export { default as UsersIcon } from './users.svg'
+export { default as WhiteListIcon } from './whitelist.svg'
