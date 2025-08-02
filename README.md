@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lendsqr Frontend Assessment
 
-## Getting Started
+This project is a submission for the Lendsqr Frontend Engineer Assessment. It demonstrates my ability to build performant and scalable user interfaces using **React**, **Next.js**, **TypeScript**, **SCSS**, and **React Query**.
 
-First, run the development server:
+---
+
+## Project Overview
+
+The application implements the following features based on the Figma design provided:
+
+**Login Page**
+**Dashboard**
+**Users Page**
+**User Details Page**
+
+---
+
+## Tech Stack
+
+| Tech                       | Usage                                                 |
+| -------------------------- | ----------------------------------------------------- |
+| **Next.js**                | React framework for SSR and routing                   |
+| **React (19)**             | UI development                                        |
+| **TypeScript**             | Type safety and code scalability                      |
+| **SCSS**                   | Styling using a hierarchical structure                |
+| **React Query**            | API data fetching and caching                         |
+| **Mocki.io**               | Used to generate and serve mock API data (100+ users) |
+| **LocalStorage**           | Used to persist user detail information               |
+| **Jest + Testing Library** | Unit testing (positive and negative cases)            |
+
+---
+
+## Live Demo
+
+> ...
+
+---
+
+## API
+
+- Mock API Endpoint: [Mocki.io](https://mocki.io/)
+- Records: 100 User Records
+- Data is consumed using **React Query**, with caching and background refetching for performance.
+
+---
+
+## Persistence
+
+User details are saved in **LocalStorage** when a user is selected. Upon returning to the details page, the app retrieves and displays stored data.
+
+---
+
+## Testing
+
+Testing is done with `Jest`.
+
+- **Positive & negative scenarios** tested for login, data fetching, and user detail retrieval.
+- Sample test command:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm run test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Responsiveness
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- All pages are mobile-responsive and adapt fluidly to various screen sizes using SCSS media queries.
 
-## Learn More
+## Author
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Honour Nosakhare
+- Github: https://github.com/honorme
+- Email: nosakhare073@gmail.com
