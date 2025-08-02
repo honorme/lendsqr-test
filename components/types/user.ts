@@ -1,0 +1,29 @@
+export interface User {
+  id: string
+  createdAt: string
+  organization: string
+  avatar: string
+  username: string
+  email: string
+  phone: string
+  status: string
+  bvn: string
+  gender: string
+  residence: string
+  fullName: string
+  maritalStatus: string
+  levelOfEducation: string
+  employmentStatus: string
+  sectorOfEmployment: string
+  durationOfEmplyment: string
+  officeEmail: string
+  monthlyIncome: string
+  loanRepayment: string
+  twitterUrl: string
+  facebookUrl: string
+  instagramUrl: string
+  guarantorFullName: string
+  guarantorEmailAddress: string
+  guarantorPhoneNumber: string
+  guarantorRelationship: string
+}
