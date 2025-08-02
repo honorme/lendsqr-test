@@ -1,0 +1,106 @@
+.container {
+  width: 100%;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #213f7d;
+  letter-spacing: -0.5px;
+}
+
+.cardSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+
+  @media (max-width: 1370px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 240px;
+    height: 160px;
+    padding: 1em;
+    background-color: #ffffff;
+    border: 1px solid #f2f3f7;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+
+    @media screen and (max-width: 768px) {
+      min-width: 100%;
+    }
+
+    .title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #545f7d;
+      letter-spacing: -0.5px;
+    }
+
+    .value {
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: #213f7d;
+      letter-spacing: -0.5px;
+    }
+
+    @mixin cardIconDefault {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    &:nth-child(1) > .icon {
+      background-color: #fce8ff;
+      @include cardIconDefault;
+    }
+
+    &:nth-child(2) > .icon {
+      background-color: #eee8ff;
+      @include cardIconDefault;
+    }
+
+    &:nth-child(3) > .icon {
+      background-color: #feeeeb;
+      @include cardIconDefault;
+    }
+
+    &:nth-child(4) > .icon {
+      background-color: #ffebf0;
+      @include cardIconDefault;
+    }
+  }
+}
+
+.headerCell {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.filter {
+  transform: translateY(-2px);
+  padding: 4px;
+
+  &:hover {
+    border-radius: 5px;
+    background-color: #f6f6f6;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+}

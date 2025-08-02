@@ -1,0 +1,389 @@
+.container {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.backText {
+  color: #545f7d;
+}
+
+.title {
+  color: #213f7d;
+  font-size: 1.5em;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.shadowCard {
+  width: 100%;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.profileHeader {
+  padding: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  background-color: #dbe0ea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @media (min-width: 768px) {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+.avatarIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #2563eb;
+
+  @media (min-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.userDetails {
+  display: flex;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.userName {
+  color: #213f7d;
+  font-size: 1.5em;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.userId {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.metaInfo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.metaItem {
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: left;
+    border-left: 1px solid #545f7d20;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.metaLabel {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.metaValue {
+  font-weight: 600;
+  color: #111827;
+}
+
+.tierStars {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+
+.star {
+  width: 1rem;
+  height: 1rem;
+}
+
+.starFilled {
+  color: #fbbf24;
+  fill: currentColor;
+}
+
+.starEmpty {
+  color: #d1d5db;
+}
+
+.amount {
+  color: #213f7d;
+  font-size: 1.5em;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.bankInfo {
+  margin-top: 5px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #213f7d;
+}
+
+.navigation {
+  padding: 0 2rem;
+}
+
+.navList {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.navItem {
+  flex-shrink: 0;
+  padding: 1rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  position: relative;
+
+  @media (min-width: 768px) {
+    padding: 1rem 1.5rem;
+  }
+
+  &:hover {
+    color: #111827;
+  }
+}
+
+.navItemActive {
+  color: #0d9488;
+  border-bottom: 2px solid #0d9488;
+}
+
+.navItemInactive {
+  color: #6b7280;
+
+  &:hover {
+    color: #111827;
+  }
+}
+
+.navText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+// Utility classes for hiding scrollbars
+.scrollbarHide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Button base styles
+%button-base {
+  padding: 0.75rem 1.5rem;
+  border: 1.4px solid;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.dangerButton {
+  @extend %button-base;
+
+  color: #dc2626;
+  border-color: #dc2626;
+  background-color: transparent;
+
+  &:hover:not(:disabled) {
+    background-color: #dc2626;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+  }
+}
+
+.goodButton {
+  @extend %button-base;
+
+  color: #06b6d4;
+  border-color: #06b6d4;
+  background-color: transparent;
+
+  &:hover:not(:disabled) {
+    background-color: #06b6d4;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(6, 182, 212, 0.3);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .dangerButton,
+  .goodButton {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+    min-width: 120px;
+  }
+}
+
+.informationSection {
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .section {
+    font-weight: 500;
+    border-bottom: 1px solid #545f7d20;
+    padding-bottom: 20px;
+
+    &:nth-last-child(1) {
+      border-bottom: none;
+    }
+
+    .sectionContent {
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+
+      @media (max-width: 1330px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .group {
+        margin-top: 10px;
+        .label {
+          color: #545f7d;
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+        .value {
+          color: #434b62;
+          font-size: 16px;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+
+  .mainText {
+    color: #213f7d;
+    font-size: 1.1em;
+    text-shadow: #111827;
+    font-weight: 500;
+
+    @media (max-width: 768px) {
+      font-size: 0.7rem;
+    }
+  }
+}
