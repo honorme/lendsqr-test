@@ -12,9 +12,13 @@ import {
   SearchIcon,
 } from '@/public/assets/svg/topbar'
 import { useRouter } from 'next/navigation'
+import { HamburgerMenuIcon } from '@/public/assets/svg/random'
+import { useSidebar } from './helper/sidebarContext'
 
 const AppHeader = () => {
   const router = useRouter()
+
+  const { toggleSidebar } = useSidebar()
 
   const [searchQuery, setSearchQuery] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
@@ -30,6 +34,9 @@ const AppHeader = () => {
         <div className={styles.logoSearchBody}>
           {/* Logo */}
           <div className={styles.logo}>
+            <div onClick={toggleSidebar} className={styles.menu}>
+              <HamburgerMenuIcon />
+            </div>
             <LendsqrLogo />
             <LendsqrText />
           </div>

@@ -114,17 +114,15 @@
 
 @media screen and (max-width: 768px) {
   .sidebar {
-    width: 0px;
     height: 100svh;
     overflow-x: hidden;
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    z-index: 100;
+    z-index: 50;
     transform: translateX(-100%);
 
-    .itemTitle {
-      display: none;
+    transition: all 0.2s ease;
+
+    &.sidebar--open {
+      transform: translateX(0);
     }
   }
 }

@@ -34,9 +34,12 @@ import {
 import styles from '@/public/scss/sidebar.module.scss'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useSidebar } from './helper/sidebarContext'
 
 function AppSidebar() {
   const pathname = usePathname()
+
+  const { isSidebarOpen } = useSidebar()
 
   type MenuItem = {
     title?: string
@@ -89,13 +92,16 @@ function AppSidebar() {
   ]
 
   return (
-    <div className={styles.sidebar}>
+    <div
+      className={`${styles.sidebar} ${
+        isSidebarOpen ? styles['sidebar--open'] : ''
+      }`}
+    >
       <div className={styles.switchOrg}>
         <SwitchOrganisationIcon />
         <p>Switch Organization</p>
         <ArrowDownIcon />
       </div>
-
       <div className={styles.menuItemsContainer}>
         <div className={styles.menuItems}>
           <div className={styles.whiteFadeaway} />

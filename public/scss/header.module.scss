@@ -35,8 +35,41 @@
 
 .logo {
   display: flex;
+  align-items: flex-start;
   gap: 10px;
   scale: 0.8;
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    padding-bottom: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      scale: 1.1;
+      background-color: #f6f6f6;
+    }
+  }
+
+  // First child (e.g., HamburgerMenuIcon)
+  > :first-child {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  // All other children except the first
+  > :not(:first-child) {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
 }
 
 .searchSection {
