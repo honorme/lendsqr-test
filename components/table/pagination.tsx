@@ -8,6 +8,7 @@ export type PaginationProps = {
   currentPage: number
   pageSize: number
   totalPages: number
+  totalCount: number
   onPageChange: (page: number) => void
 }
 
@@ -15,6 +16,7 @@ export function Pagination({
   currentPage,
   pageSize,
   totalPages,
+  totalCount,
   onPageChange,
 }: PaginationProps) {
   currentPage = Number(currentPage)
@@ -30,8 +32,13 @@ export function Pagination({
 
   return (
     <div className={styles.paginationContainer}>
-      <div className={styles.showingText}>
-        Showing <span className={styles.dropdown}>100</span> out of 100
+      <div className={styles.showingBody}>
+        <div className={styles.showingText}>
+          Showing <span className={styles.dropdown}>{pageSize}</span> out of{' '}
+          {totalCount}
+        </div>
+        <p>.</p>
+        <div className={styles.showingText}>Page {currentPage}</div>
       </div>
 
       <div className={styles.paginationControls}>

@@ -3,8 +3,9 @@ import React, { useState, useEffect, Fragment } from 'react'
 import styles from '@/public/scss/components/table/filter.module.scss'
 import { fcase } from '../helper/textFormat'
 import { useUrlQuery } from '../hooks/urlQuery'
+import { TableRef } from '.'
 
-type FilterType = 'text' | 'boolean' | 'select' | 'date'
+export type FilterType = 'text' | 'boolean' | 'select' | 'date'
 export type FilterOption<K extends string> = {
   key: K
   label?: string
@@ -15,9 +16,11 @@ export type FilterOption<K extends string> = {
 const FilterPopup = <K extends string>({
   children,
   filterOptions,
+  tableRef,
 }: {
   children: React.ReactNode
   filterOptions: FilterOption<K>[]
+  tableRef: React.RefObject<TableRef | null>
 }) => {
   const [q, setQuery] = useUrlQuery<Partial<{ [T in keyof K]: string }>>()
   const [isOpen, setIsOpen] = useState(false)
@@ -25,11 +28,13 @@ const FilterPopup = <K extends string>({
 
   const handleReset = () => {
     setValues({})
+    tableRef.current?.setPage(1)
     setQuery({ options: { removeAll: true } })
   }
 
   const handleFilter = () => {
     setQuery({ query: values })
+    tableRef.current?.setPage(1)
     setIsOpen(false)
   }
 
@@ -57,10 +62,14 @@ const FilterPopup = <K extends string>({
   }) => {
     let value = rawValue
     if (type === 'date') {
-      value = new Date(rawValue).toISOString()
+      value = new Date(rawValue).toISOString().split('T')[0]
     }
     setValues((prev) => ({ ...prev, [k]: value }))
   }
+
+  useEffect(() => {
+    setValues(q)
+  }, [])
 
   return (
     <>
@@ -82,7 +91,7 @@ const FilterPopup = <K extends string>({
                   </label>
                   <input
                     type="text"
-                    value={q[option.key]}
+                    value={values?.[option.key] || ''}
                     onChange={(e) => {
                       onChangeValue({
                         k: option.key,
@@ -105,8 +114,10 @@ const FilterPopup = <K extends string>({
                   <input
                     type="date"
                     value={
-                      q[option.key as keyof K]
-                        ? new Date(q[option.key]!).toISOString().split('T')[0]
+                      values?.[option.key as keyof K]
+                        ? new Date(values[option.key]!)
+                            .toISOString()
+                            .split('T')[0]
                         : ''
                     }
                     onChange={(e) => {
@@ -129,7 +140,7 @@ const FilterPopup = <K extends string>({
                   </label>
                   <div className={styles.inputWrapper}>
                     <select
-                      value={q[option.key]}
+                      value={values?.[option.key] || ''}
                       onChange={(e) => {
                         onChangeValue({
                           k: option.key,

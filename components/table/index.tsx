@@ -6,14 +6,19 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import React from 'react'
+import React, { useImperativeHandle } from 'react'
 
 import styles from '@/public/scss/components/table/table.module.scss'
 import { Pagination } from './pagination'
 import { useUrlQuery } from '../hooks/urlQuery'
 import { ViewIcon } from '@/public/assets/svg/sidebar/table'
 
+export interface TableRef {
+  setPage: React.Dispatch<React.SetStateAction<number>>
+}
+
 type DataTableProps<Data, TValue> = {
+  ref?: React.ForwardedRef<TableRef>
   columns: ColumnDef<Data, TValue>[]
   data: Data[]
   pageSize?: number
@@ -27,6 +32,7 @@ type DataTableProps<Data, TValue> = {
 }
 
 export function Table<Data extends object>({
+  ref,
   columns,
   data,
   pageSize = 10,
@@ -64,6 +70,10 @@ export function Table<Data extends object>({
       setPage(p)
     }
   }
+
+  useImperativeHandle(ref, () => ({
+    setPage,
+  }))
 
   return (
     <div>
@@ -131,6 +141,7 @@ export function Table<Data extends object>({
             currentPage={pagination === 'api' ? q.page || 1 : page}
             pageSize={pageSize}
             totalPages={totalPages}
+            totalCount={data?.length}
             onPageChange={onPageChange}
           />
         </div>
