@@ -8,8 +8,25 @@
   }
 }
 
+.backTextBody {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
 .backText {
   color: #545f7d;
+}
+
+.titleBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .title {

@@ -21,14 +21,14 @@ function UserDetail() {
       <div
         onClick={() => {
           remove()
-          router.push('/users')
+          router.back()
         }}
-        className="flex-row gap-2 items-center mb-4 cursor-pointer"
+        className={styles.backTextBody}
       >
         <ArrowLeftLongIcon />
         <p className={styles.backText}>Back to Users</p>
       </div>
-      <div className="flex-row items-center justify-between gap-2 mb-8">
+      <div className={styles.titleBody}>
         <h1 className={styles.title}>User Details</h1>
         <div className="flex-row gap-2">
           <button className={styles.dangerButton}>Blacklist User</button>

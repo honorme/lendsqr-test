@@ -5,6 +5,9 @@
 .w-full {
   width: 100%;
 }
+.w-fit {
+  width: fit-content;
+}
 
 /* flex */
 .flex-row {
@@ -18,22 +21,9 @@
 .gap-2 {
   gap: 0.5rem;
 }
-.gap-4 {
-  gap: 1rem;
-}
 .gap-8 {
   gap: 2rem;
 }
-.items-center {
-  align-items: center;
-}
-.justify-center {
-  justify-content: center;
-}
-.justify-between {
-  justify-content: space-between;
-}
-
 /* margin */
 
 .mt-2 {
