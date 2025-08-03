@@ -1,6 +1,6 @@
 'use client'
 
-import { Table } from '@/components/table'
+import { Table, TableRef } from '@/components/table'
 import {
   ActiveUsersIcon,
   UsersIcon,
@@ -13,38 +13,50 @@ import { formatColumns } from '@/components/helper/columnFormat'
 import { User } from '@/components/types/user'
 import Loader from '@/components/Loader'
 import { capsule } from '@/components/table/capsule'
-import { FilterIcon } from '@/public/assets/svg/sidebar/table'
-import FilterPopup, { FilterOption } from '@/components/table/filter'
-import { useCallback, useMemo } from 'react'
+import { FilterIcon, RemoveFilterIcon } from '@/public/assets/svg/sidebar/table'
+import FilterPopup, {
+  FilterOption,
+  FilterType,
+} from '@/components/table/filter'
+import { useCallback, useMemo, useRef } from 'react'
 import { useUrlQuery } from '@/components/hooks/urlQuery'
 import { useStoredUser } from './useStoredUser'
 import { useRouter } from 'next/navigation'
 
 function Users() {
   const router = useRouter()
-  const [q] = useUrlQuery<User>()
+  const [q, setQuery] = useUrlQuery<User>()
   const { data: usersUnfiltered, isLoading } = useUsers()
 
   const { store } = useStoredUser()
 
+  const tableRef = useRef<TableRef>(null)
+
   const onFilter = useCallback(
     (users: User[] | undefined, query: Partial<User>) => {
-      let abc = false
+      let queryExists = false
+
+      const key_filtertype: Partial<{ [K in keyof User]: FilterType }> = {}
 
       filterOptions.forEach((option) => {
         if (q[option.key]) {
-          abc = true
+          queryExists = true
+          key_filtertype[option.key] = option.type
         }
       })
 
       return users?.filter((item) => {
-        if (abc) {
-          return Object.entries(query).every(([key, value]) => {
-            return value ? item[key as keyof User] === value : true
-          })
-        } else {
-          return true
-        }
+        if (!queryExists) return true
+
+        return Object.entries(query).every(([key, value]) => {
+          if (key_filtertype[key as K] === 'date') {
+            const a = new Date(value).toLocaleDateString('en-CA')
+            const b = new Date(item[key as K]).toLocaleDateString('en-CA')
+
+            return a === b
+          }
+          return value ? fs(item[key as K]) === fs(value) : true
+        })
       })
     },
     [q]
@@ -104,7 +116,8 @@ function Users() {
       </div>
 
       <Table<User>
-        data={users!}
+        ref={tableRef}
+        data={users || []}
         columns={formatColumns({
           data: users,
           dataKeys: [
@@ -119,7 +132,14 @@ function Users() {
             x.reduce(
               (acc, curr) => ({
                 ...acc,
-                [curr]: <HeaderCell value={curr as keyof User} />,
+                [curr]: (
+                  <HeaderCell
+                    value={curr as keyof User}
+                    hasFilter={!!q[curr]}
+                    onClearFilter={() => setQuery({ remove: [curr] })}
+                    tableRef={tableRef}
+                  />
+                ),
               }),
               {}
             ),
@@ -138,8 +158,13 @@ function Users() {
     </div>
   )
 }
+type K = keyof User
 
-const filterOptions: FilterOption<keyof User>[] = [
+function fs(a: string) {
+  return a ? a?.trim()?.toLowerCase() : ''
+}
+
+const filterOptions: FilterOption<K>[] = [
   {
     key: 'organization',
     type: 'text',
@@ -177,13 +202,34 @@ const header: Partial<{ [K in keyof User]: string }> = {
   status: 'STATUS',
 }
 
-const HeaderCell = ({ value }: { value: keyof User }) => {
+const HeaderCell = ({
+  value,
+  hasFilter,
+  onClearFilter,
+  tableRef,
+}: {
+  value: keyof User
+  hasFilter: boolean
+  onClearFilter: (e: React.MouseEvent) => void
+  tableRef: React.RefObject<TableRef | null>
+}) => {
   return (
     <div className={styles.headerCell}>
       <p>{header[value]}</p>
-      <FilterPopup<keyof User> filterOptions={filterOptions}>
-        <div className={styles.filter}>
-          <FilterIcon />
+      <FilterPopup<keyof User>
+        filterOptions={filterOptions}
+        tableRef={tableRef}
+      >
+        <div
+          className={styles.filter}
+          onClick={(e) => {
+            if (hasFilter) {
+              e.stopPropagation()
+              onClearFilter(e)
+            }
+          }}
+        >
+          {hasFilter ? <RemoveFilterIcon /> : <FilterIcon />}
         </div>
       </FilterPopup>
     </div>

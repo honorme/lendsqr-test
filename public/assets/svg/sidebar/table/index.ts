@@ -1,4 +1,5 @@
 export { default as FilterIcon } from './filter.svg'
+export { default as RemoveFilterIcon } from './remove-filter.svg'
 export { default as BalcklistIcon } from './blacklist.svg'
 export { default as ActivateIcon } from './activate.svg'
 export { default as MenuIcon } from './menu.svg'
